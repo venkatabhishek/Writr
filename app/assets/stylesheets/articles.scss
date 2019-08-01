@@ -1,0 +1,16 @@
+.editor-wrapper{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.save{
+    float: right;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+@media screen and (max-width: 1200px) {
+    .editor-wrapper {
+        padding: 0 16px 16px 16px;
+    }
+}

@@ -1,0 +1,18 @@
+<div class="navbar-wrapper">
+    <div class="navbar">
+        <div class="logo-wrapper route" data-path="/">
+            <span class="logo">Writr</span>
+            <span class="logo-mobile">W</span>
+        </div>
+        <div class="link-wrapper">
+            <%= image_tag("search.svg", :alt => "search", :class => "link route", :data => { :path => "/search"} ) %>
+            <%= image_tag("bell.svg", :alt => "notif", :class => "link route", :data => { :path => "/notifications"} ) %>
+            <div class="new-btn link route" data-path="/articles/new">
+                New
+            </div>
+            <div class="avatar link">
+            </div>
+
+        </div>
+    </div>
+</div>
