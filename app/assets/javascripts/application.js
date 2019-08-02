@@ -11,14 +11,31 @@
 // about supported directives.
 //
 //= require jquery
+//= require toastr.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 
 $(document).ready(function() {
 
+    var dp = $(".dropdown-content")
+
     // routing helper
     $(".route").click(function(e) {
         window.location = $(e.currentTarget).data('path')
     })
+
+    // dropdown
+    $(window).click(function(){
+        dp.hide();
+    })
+
+    $(".avatar").click(function(e){
+        dp.toggle();
+    })
+
+    $(".dropdown").click(function(e){
+        e.stopPropagation()
+    })
+
 })

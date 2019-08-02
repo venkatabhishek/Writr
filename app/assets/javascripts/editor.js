@@ -4,12 +4,11 @@ $(document).ready(function() {
 
     var Delta = Quill.import('delta');
 
-    var q = new Delta()
-    console.log(q)
-
     var save = $(".save");
 
     var token = $('meta[name="csrf-token"]').attr('content');
+
+    var created = false;
 
     var quill = new Quill('#editor', {
         modules: {
@@ -36,15 +35,21 @@ $(document).ready(function() {
                 content = newContent;
 
                 //send save request
-                $.ajax({
-                    type: 'POST',
-                    url: '/articles',
-                    data: { content: JSON.stringify(content) }
-                }).done(function(msg) {
-                    save.html("saved")
-                }).fail(function(err) {
-                    console.log(err)
-                })
+                if (created) {
+
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/articles',
+                        data: { content: JSON.stringify(content) }
+                    }).done(function(msg) {
+                        save.html("saved")
+                        created = true;
+                    }).fail(function(err) {
+                        console.log(err)
+                    })
+                }
+
 
 
             } else {

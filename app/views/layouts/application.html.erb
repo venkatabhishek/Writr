@@ -14,7 +14,11 @@
 
   <body>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+    <script>
+        toastr.options = {
+            "positionClass": "toast-bottom-left",
+        }
+    </script>
+    <%= custom_flash %>
   </body>
 </html>
