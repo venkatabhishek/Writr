@@ -60,14 +60,26 @@ html, body{
 }
 
 
-.new-btn{
+.btn{
     padding: 4px 12px;
-    border: 1px solid rgba(0, 0, 0, 0.54);
     border-radius: 5px;
-    color:  rgba(0,0,0, 0.84);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.new{
+    border: 1px solid rgba(0, 0, 0, 0.54);
+    color:  rgba(0,0,0, 0.84);
+}
+
+.green{
+    color: #029e74;
+}
+
+.border{
+    border: 1px solid #029e74;
+    padding: 10px 15px !important;
 }
 
 .avatar{
