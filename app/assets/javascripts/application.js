@@ -10,15 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-3.4.1.min
-//
+//= require jquery
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 
-$(document).ready(function(){
+$(document).ready(function() {
+
     // routing helper
-    $(".route").click(function(e){
+    $(".route").click(function(e) {
         window.location = $(e.currentTarget).data('path')
     })
 })

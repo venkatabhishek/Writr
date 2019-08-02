@@ -1,8 +1,15 @@
 $(document).ready(function() {
 
+    // setup
+
     var Delta = Quill.import('delta');
 
+    var q = new Delta()
+    console.log(q)
+
     var save = $(".save");
+
+    var token = $('meta[name="csrf-token"]').attr('content');
 
     var quill = new Quill('#editor', {
         modules: {
@@ -22,13 +29,23 @@ $(document).ready(function() {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(function() {
             var newContent = quill.getContents()
-            var diff = newContent.diff(content)
-            if (diff.ops.length > 0) {
+            var diff = content.diff(newContent)
+            console.log(diff.ops)
 
-                save.html("saved")
+            if (diff.ops.length > 0) {
                 content = newContent;
 
                 //send save request
+                $.ajax({
+                    type: 'POST',
+                    url: '/articles',
+                    data: { content: JSON.stringify(content) }
+                }).done(function(msg) {
+                    save.html("saved")
+                }).fail(function(err) {
+                    console.log(err)
+                })
+
 
             } else {
                 save.html("")
