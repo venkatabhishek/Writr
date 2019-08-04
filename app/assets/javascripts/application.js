@@ -18,7 +18,8 @@
 
 $(document).ready(function() {
 
-    var dp = $(".dropdown-content")
+    var dp = $(".dropdown-content-wrapper")
+    dp.show();
 
     // routing helper
     $(".route").click(function(e) {
