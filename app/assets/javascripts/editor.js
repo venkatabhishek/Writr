@@ -29,20 +29,32 @@ $(document).ready(function() {
         timeoutId = setTimeout(function() {
             var newContent = quill.getContents()
             var diff = content.diff(newContent)
-            console.log(diff.ops)
 
             if (diff.ops.length > 0) {
                 content = newContent;
 
-                //send save request
+                // send save request
                 if (created) {
 
+                    // update existing article
+
                 } else {
+
+                    // create new article
+
+                    save.html("saved")
+
                     $.ajax({
                         type: 'POST',
                         url: '/articles',
-                        data: { content: JSON.stringify(content) }
-                    }).done(function(msg) {
+                        data: {
+                            article: {
+                                content: JSON.stringify(content)
+                            }
+                        }
+
+                    }).done(function(id) {
+                        console.log(id)
                         save.html("saved")
                         created = true;
                     }).fail(function(err) {
