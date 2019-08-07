@@ -38,4 +38,16 @@ $(document).ready(function() {
         e.stopPropagation()
     })
 
+    // logout
+    $(".logout").click(function(e){
+        $.ajax({
+            method: "DELETE",
+            url: "/users/sign_out"
+        }).done(function(){
+            window.location.reload()
+        }).fail(function(e){
+            console.log(e)
+        })
+    })
+
 })

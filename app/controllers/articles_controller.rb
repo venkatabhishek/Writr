@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-require 'json'
-
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
