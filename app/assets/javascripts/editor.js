@@ -50,7 +50,13 @@ $(document).ready(function() {
 
                     }).done(function(data) {
 
-                        save.html("saved")
+                        if(data.status == 1){
+                            save.html("saved")
+                        }else{
+                            save.html("error")
+                        }
+
+
 
 
                     }).fail(function(err) {

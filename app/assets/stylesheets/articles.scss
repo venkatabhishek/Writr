@@ -1,4 +1,4 @@
-.editor-wrapper{
+.wrapper{
     width: 100%;
     max-width: 1200px;
     margin: auto;
@@ -13,4 +13,39 @@
     .editor-wrapper {
         padding: 0 16px 16px 16px;
     }
+}
+
+
+h1, h2, h4{
+    font-weight: normal;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.article{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h{
+    height: 30px;
+    padding: 10px 15px !important;
+    margin: 10px;
+}
+
+.red{
+    border: 1px solid red;
+    padding: 10px 15px;
+    color: red;
 }

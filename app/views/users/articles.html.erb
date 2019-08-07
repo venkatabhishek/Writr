@@ -1,0 +1,32 @@
+<%= render "partials/navbar" %>
+
+<div class="wrapper">
+    <div class="header">
+        <h1>Your Articles</h1>
+        <div class="btns">
+            <div class="btn new h">
+                Write Article
+            </div>
+            <div class="btn border green h">
+                Import Article
+            </div>
+        </div>
+    </div>
+    <div class="articles">
+        <div class="divide" style="height: 2px;"></div>
+        <% @articles.each do |article| %>
+            <div class="article">
+                <div class="info">
+                    <h2><%= article.title %></h2>
+                    <h4><%= article.updated_at.strftime("%m/%d/%Y") %></h4>
+                </div>
+                <div class="btn red h delete" data-id="<%= article.id %>">
+                    Delete
+                </div>
+            </div>
+            <div class="divide" style="height: 2px;"></div>
+        <% end %>
+    </div>
+</div>
+
+<%= javascript_include_tag 'articles' %>

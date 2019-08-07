@@ -22,9 +22,18 @@ class ArticlesController < ApplicationController
     end
 end
 
+	def destroy
+		article = Article.find(params[:id])
+  	article.destroy
+
+		render json: { status: 1 }
+	end
+
   private
 
   def article_params
     params.require(:article).permit(:content)
   end
+
+
 end
