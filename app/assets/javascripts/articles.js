@@ -1,4 +1,23 @@
 $(document).ready(function(){
+
+    // options menu animations
+
+    $(".more").mousedown(function(e){
+        $(e.currentTarget).addClass('down')
+
+        var id = $(e.currentTarget).data('id');
+
+        $(".options[data-id="+id+"]").toggle();
+
+    }).mouseup(function(e){
+        $(e.currentTarget).removeClass('down')
+    })
+
+
+    // options menu
+
+    // delete article
+
     $(".delete").click(function(e){
         var id = $(e.currentTarget).data("id")
 
@@ -11,4 +30,6 @@ $(document).ready(function(){
             console.log(e)
         })
     })
+
+
 })

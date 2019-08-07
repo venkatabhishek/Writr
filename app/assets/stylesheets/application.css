@@ -121,6 +121,10 @@ html, body {
     margin: 5px;
 }
 
+.hover:hover{
+    background: rgba(0,0,0,0.07);
+}
+
 .divide {
     height: 1px;
     background: rgba(0, 0, 0, .1);
