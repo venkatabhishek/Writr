@@ -169,7 +169,7 @@ html, body {
 }
 
 @media only screen and (max-width: 1024px) {
-    .dropdown-content {
-        right: 0;
+    .dropdown-content-wrapper {
+        right: 0px;
     }
 }

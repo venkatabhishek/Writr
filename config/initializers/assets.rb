@@ -13,6 +13,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-%w( articles home editor articles ).each do |page|
+%w( articles home editor articles edit ).each do |page|
   Rails.application.config.assets.precompile += ["#{page}.js"]
 end

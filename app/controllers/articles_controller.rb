@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+require 'json'
+
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
@@ -6,6 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    @signed_in = user_signed_in?
     article = current_user.articles.create(article_params)
     article.save
 
@@ -22,18 +26,27 @@ class ArticlesController < ApplicationController
     end
 end
 
-	def destroy
-		article = Article.find(params[:id])
-  	article.destroy
+  def edit
+    @signed_in = user_signed_in?
+    @article = Article.find(params[:id])
+  end
 
-		render json: { status: 1 }
-	end
+  def content
+    @article = Article.find(params[:id])
+
+    render json: { content: @article.content }
+  end
+
+  def destroy
+    article = Article.find(params[:id])
+    article.destroy
+
+    render json: { status: 1 }
+  end
 
   private
 
   def article_params
     params.require(:article).permit(:content)
   end
-
-
 end

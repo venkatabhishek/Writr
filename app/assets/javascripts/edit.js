@@ -8,10 +8,19 @@ $(document).ready(function() {
 
     var token = $('meta[name="csrf-token"]').attr('content');
 
-    var created = false;
-    var id = -1;
+    // parse url
+    var id = window.location.pathname.split("/")[2];
+    var content;
 
-    var quill = new Quill('#editor', {
+    console.log(id)
+    // get initial content
+    $.ajax({
+        method: "GET",
+        url: `/articles/${id}/content`
+    }).done(function(data){
+        content = new Delta(JSON.parse(data.content).ops)
+
+        var quill = new Quill('#editor', {
         modules: {
             toolbar: {
                 container: "#toolbar",
@@ -21,7 +30,9 @@ $(document).ready(function() {
         theme: "snow"
     });
 
-    var content = quill.getContents();
+    quill.setContents(content)
+
+
     var timeoutId;
 
     quill.on('text-change', function() {
@@ -33,11 +44,6 @@ $(document).ready(function() {
 
             if (diff.ops.length > 0) {
                 content = newContent;
-
-                console.log(created)
-
-                // send save request
-                if (created) {
 
                     // update existing article
 
@@ -59,8 +65,6 @@ $(document).ready(function() {
                         }
 
 
-
-
                     }).fail(function(err) {
 
                         save.html("Save failed")
@@ -68,30 +72,6 @@ $(document).ready(function() {
                         console.log(err)
                     })
 
-                } else {
-
-                    // create new article
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/articles',
-                        data: {
-                            article: {
-                                content: JSON.stringify(content)
-                            }
-                        }
-
-                    }).done(function(data) {
-
-                        save.html("saved")
-
-                        id = data.id
-                        created = true;
-
-                    }).fail(function(err) {
-                        console.log(err)
-                    })
-                }
 
 
 
@@ -102,6 +82,13 @@ $(document).ready(function() {
         }, 1000);
 
     });
+
+
+    }).fail(function(e){
+        console.log(e)
+    })
+
+
 
 
 })

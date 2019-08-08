@@ -4,7 +4,7 @@
     <div class="header">
         <h1>Your Articles</h1>
         <div class="btns">
-            <div class="btn new h">
+            <div class="btn new h route" data-path="/articles/new">
                 Write Article
             </div>
             <div class="btn border green h">
@@ -27,13 +27,17 @@
 
                 <%= image_tag("ellipsis.svg", :alt => "more", :class => "more", :draggable => "false", :data => { :id => article.id}) %>
                 <div class="options" data-id="<%= article.id %>">
-                    <div class="option">
+                    <div class="option edit" data-id="<%= article.id %>">
                         Edit
                     </div>
-                    <div class="option">
+                    <div class="option red delete" data-id="<%= article.id %>">
                         Delete
                     </div>
-
+                    <% if !article.draft %>
+                        <div class="option">
+                            Publish
+                        </div>
+                    <% end %>
                 </div>
             </div>
             <div class="divide" style="height: 2px;"></div>
