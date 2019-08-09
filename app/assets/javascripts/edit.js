@@ -8,48 +8,51 @@ $(document).ready(function() {
 
     var token = $('meta[name="csrf-token"]').attr('content');
 
+    // editor handlers
+
     // parse url
     var id = window.location.pathname.split("/")[2];
     var content;
 
-    console.log(id)
     // get initial content
     $.ajax({
         method: "GET",
         url: `/articles/${id}/content`
-    }).done(function(data){
+    }).done(function(data) {
         content = new Delta(JSON.parse(data.content).ops)
 
         var quill = new Quill('#editor', {
-        modules: {
-            toolbar: {
-                container: "#toolbar",
+            modules: {
+                toolbar: {
+                    container: "#toolbar",
+                    handlers: {
+
+                    }
+                },
             },
-        },
-        placeholder: 'Compose an epic...',
-        theme: "snow"
-    });
-
-    quill.setContents(content)
+            placeholder: 'Compose an epic...',
+        });
 
 
-    var timeoutId;
+        quill.setContents(content)
 
-    quill.on('text-change', function() {
-        save.html("saving...")
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(function() {
-            var newContent = quill.getContents()
-            var diff = content.diff(newContent)
+        var timeoutId;
 
-            if (diff.ops.length > 0) {
-                content = newContent;
+        quill.on('text-change', function() {
+            save.html("saving...")
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function() {
+                var newContent = quill.getContents()
+                var diff = content.diff(newContent)
+
+                if (diff.ops.length > 0) {
+                    content = newContent;
 
                     // update existing article
 
                     $.ajax({
                         type: 'PATCH',
-                        url: '/articles/'+id,
+                        url: '/articles/' + id,
                         data: {
                             article: {
                                 content: JSON.stringify(content)
@@ -58,9 +61,9 @@ $(document).ready(function() {
 
                     }).done(function(data) {
 
-                        if(data.status == 1){
+                        if (data.status == 1) {
                             save.html("saved")
-                        }else{
+                        } else {
                             save.html("error")
                         }
 
@@ -75,16 +78,16 @@ $(document).ready(function() {
 
 
 
-            } else {
-                save.html("")
-            }
+                } else {
+                    save.html("")
+                }
 
-        }, 1000);
+            }, 1000);
 
-    });
+        });
 
 
-    }).fail(function(e){
+    }).fail(function(e) {
         console.log(e)
     })
 

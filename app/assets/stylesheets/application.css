@@ -24,6 +24,7 @@ html, body {
 .navbar-wrapper {
     background: #fff;
     height: 80px;
+    margin-bottom: 10px;
 }
 
 .navbar {

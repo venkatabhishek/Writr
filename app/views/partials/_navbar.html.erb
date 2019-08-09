@@ -6,7 +6,7 @@
         </div>
         <div class="link-wrapper">
             <%= image_tag("search.svg", :alt => "search", :class => "link route", :data => { :path => "/search"} ) %>
-            <% if @signed_in %>
+            <% if user_signed_in? %>
                 <%= image_tag("bell.svg", :alt => "notif", :class => "link route", :data => { :path => "/notifications"} ) %>
                 <div class="new btn link route" data-path="/articles/new">
                     New
@@ -14,6 +14,7 @@
 
                 <div class="dropdown">
                     <div class="avatar">
+                        <img src="https://identicons.github.com/<%= current_user.email %>.png">
                     </div>
                     <div class="dropdown-content-wrapper">
                     <div class="dropdown-content">

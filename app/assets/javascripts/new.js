@@ -34,7 +34,6 @@ $(document).ready(function() {
             if (diff.ops.length > 0) {
                 content = newContent;
 
-                console.log(created)
 
                 // send save request
                 if (created) {
@@ -87,6 +86,8 @@ $(document).ready(function() {
 
                         id = data.id
                         created = true;
+
+                        window.history.pushState({}, 'Edit', `/articles/${id}/edit`);
 
                     }).fail(function(err) {
                         console.log(err)

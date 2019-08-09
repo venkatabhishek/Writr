@@ -2,18 +2,17 @@
 require 'json'
 
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def new
-    @signed_in = user_signed_in?
+    @email = current_user.email
   end
 
   def create
-    @signed_in = user_signed_in?
-    article = current_user.articles.create(article_params)
-    article.save
+    @article = current_user.articles.create(article_params)
+    @article.save
 
-    render json: { id: article.id }
+    render json: { id: @article.id }
   end
 
   def update
@@ -27,8 +26,10 @@ class ArticlesController < ApplicationController
 end
 
   def edit
-    @signed_in = user_signed_in?
     @article = Article.find(params[:id])
+    if(@article.user_id != current_user.id)
+        redirect_to root
+    end
   end
 
   def content

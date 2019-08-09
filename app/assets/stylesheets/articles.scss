@@ -28,6 +28,15 @@ h1, h2, h4{
     margin-bottom: 20px;
 }
 
+#toolbar{
+    margin-bottom: 30px;
+}
+
+#editor{
+    font-family: 'Roboto', sans-serif;
+    font-size: 21px;
+}
+
 .article{
     display: flex;
     justify-content: space-between;
@@ -93,4 +102,13 @@ h1, h2, h4{
 
 .red{
     color: red;
+}
+
+
+.toolbar-option{
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    height: 48px;
+    padding: 0px 11px 0px 12px;
+    background-color: #fff;
 }
