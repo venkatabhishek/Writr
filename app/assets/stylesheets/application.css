@@ -23,8 +23,8 @@ html, body {
 
 .navbar-wrapper {
     background: #fff;
-    height: 80px;
-    margin-bottom: 10px;
+    height: 100px;
+    margin-bottom: 30px;
 }
 
 .navbar {
@@ -83,12 +83,17 @@ html, body {
     padding: 10px 15px !important;
 }
 
-.avatar {
+.avatar{
+    height: 36px;
+}
+
+.avatar  > img{
     height: 32px;
-    width: 32px;
     border-radius: 100%;
-    background: black;
     margin-left: 5px;
+    cursor: pointer;
+    padding: 1px;
+    border: 1px solid rgba(0, 0, 0, 0.54);
 }
 
 .dropdown {
@@ -145,11 +150,9 @@ html, body {
     padding: 15px;
 }
 
-.profile-avatar {
-    height: 40px;
-    width: 40px;
+.profile-avatar > img {
+    height: 45px;
     border-radius: 100%;
-    background: black;
     margin-left: 5px;
 }
 

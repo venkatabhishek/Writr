@@ -1,6 +1,6 @@
 .wrapper{
     width: 100%;
-    max-width: 1200px;
+    max-width: 1080px;
     margin: auto;
 }
 
@@ -9,7 +9,7 @@
     color: rgba(0, 0, 0, 0.54);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1080px) {
     .wrapper {
         padding: 0 20px 16px 20px;
     }
@@ -55,6 +55,10 @@ h1, h2, h4{
     margin: 10px;
 }
 
+.ql-editor.ql-blank::before {
+    font-style: normal;
+}
+
 
 .small{
     font-size: 12px;
@@ -94,6 +98,7 @@ h1, h2, h4{
     margin: 14px 5px;
     cursor: pointer;
     padding: 8px;
+    border-radius: 4px;
 }
 
 .option:hover{
@@ -109,6 +114,19 @@ h1, h2, h4{
     outline: none;
     border: 1px solid rgba(0, 0, 0, 0.12);
     height: 48px;
-    padding: 0px 11px 0px 12px;
+    padding: 12px;
     background-color: #fff;
+    transition: background-color 100ms linear;
+}
+
+.toolbar-option:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.ql-active{
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.ql-active:hover{
+    background-color: rgba(0, 0, 0, 0.15);
 }

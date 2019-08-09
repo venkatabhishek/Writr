@@ -6,37 +6,33 @@ $(document).ready(function() {
 
     var save = $(".save");
 
-    var token = $('meta[name="csrf-token"]').attr('content');
+    // hover styles
 
-    // editor handlers
+
 
     // parse url
     var id = window.location.pathname.split("/")[2];
     var content;
+    var timeoutId;
 
     // get initial content
     $.ajax({
         method: "GET",
         url: `/articles/${id}/content`
     }).done(function(data) {
-        content = new Delta(JSON.parse(data.content).ops)
 
         var quill = new Quill('#editor', {
             modules: {
                 toolbar: {
                     container: "#toolbar",
-                    handlers: {
-
-                    }
+                    handlers: ['bold', 'italic', 'underline', 'strike']
                 },
             },
             placeholder: 'Compose an epic...',
         });
 
-
+        content = new Delta(JSON.parse(data.content).ops)
         quill.setContents(content)
-
-        var timeoutId;
 
         quill.on('text-change', function() {
             save.html("saving...")

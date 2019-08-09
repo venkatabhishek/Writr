@@ -14,11 +14,12 @@ $(document).ready(function() {
     var quill = new Quill('#editor', {
         modules: {
             toolbar: {
-                container: "#toolbar",
-            },
+                    container: "#toolbar",
+                    handlers: ['bold', 'italic', 'underline', 'strike']
+                },
         },
         placeholder: 'Compose an epic...',
-        theme: "snow"
+
     });
 
     var content = quill.getContents();

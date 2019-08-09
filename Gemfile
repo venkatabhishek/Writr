@@ -17,6 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # authentication
 gem 'devise'
+# profile avatars
+gem 'identicon'
 # jquery
 gem 'jquery-rails'
 # Use CoffeeScript for .coffee assets and views

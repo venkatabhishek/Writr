@@ -14,19 +14,20 @@
 
                 <div class="dropdown">
                     <div class="avatar">
-                        <img src="https://identicons.github.com/<%= current_user.email %>.png">
+                         <img src="<%= Identicon.data_url_for current_user.email %>" alt="" />
                     </div>
                     <div class="dropdown-content-wrapper">
                     <div class="dropdown-content">
                         <div class="section-profile">
                                 <div class="profile-avatar">
+                                    <img src="<%= Identicon.data_url_for current_user.email %>" alt="" />
                                 </div>
                             <div class="profile-name">
                                 <p>
-                                    Abhishek Venkat
+                                    Name
                                 </p>
                                 <p>
-                                    @abhisaivenkat
+                                    @<%= current_user.email.match(/^[^@]*/i) %>
                                 </p>
                             </div>
                         </div>
