@@ -42,7 +42,7 @@ $(document).ready(function() {
     $(".logout").click(function(e){
         $.ajax({
             method: "DELETE",
-            url: "/users/sign_out"
+            url: "/logout"
         }).done(function(){
             window.location.reload()
         }).fail(function(e){

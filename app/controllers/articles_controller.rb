@@ -32,6 +32,9 @@ end
     end
   end
 
+  def show
+  end
+
   def content
     @article = Article.find(params[:id])
 
