@@ -6,10 +6,6 @@ $(document).ready(function() {
 
     var save = $(".save");
 
-    // hover styles
-
-
-
     // parse url
     var id = window.location.pathname.split("/")[2];
     var content;

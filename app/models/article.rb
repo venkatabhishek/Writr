@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   before_create :set_defaults
 
   def set_defaults
-    self.draft = false
+    self.draft = true
     self.title = "Default Title"
   end
 

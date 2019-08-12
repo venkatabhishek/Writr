@@ -42,15 +42,6 @@ end
     render json: { content: @article.content }
   end
 
-  def publish
-    @article = Article.find(params[:id])
-    if(@article.update(draft: false))
-      render json: { status: 1 }
-    else
-      render json: { status: 0 }
-    end
-  end
-
   def destroy
     article = Article.find(params[:id])
     article.destroy
@@ -61,6 +52,6 @@ end
   private
 
   def article_params
-    params.require(:article).permit(:content)
+    params.require(:article).permit(:content, :title, :subtitle, :tags, :draft)
   end
 end

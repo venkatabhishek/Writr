@@ -1,4 +1,4 @@
-<div class="navbar-wrapper">
+<div class="navbar-wrapper wrapper">
     <div class="navbar">
         <div class="logo-wrapper route" data-path="/">
             <span class="logo">Writr</span>
@@ -69,21 +69,39 @@
 </div>
 
 <div class="publish-wrapper">
-
-    <div class="publish-close">
-        Close
+    <div class="publish-top">
+        <h1>
+        Publish Article
+        </h1>
+        <div class="publish-close btn">
+        Cancel
     </div>
+    </div>
+    
 
     <div class="publish-content">
         <div class="col">
             <div class="publish-image">
             </div>
+
+            <h4>Preview Image</h4>
+            
         </div>
         <div class="col meta">
-            <label>Title</label>
-            <input />
-            <label>Subtitle</label>
-            <input />
+            <p>
+                Add tags to make it easier to find you article
+            </p>
+            <div class="input-group">
+                <input name='tags' class="input-border" contenteditable="true" placeholder="Add tags..."/>
+                <h4>HINT: Press enter after typing to add tag</h4>
+                <div class="input publish-title" contenteditable="true" placeholder="Preview title..."></div>
+
+                <div class="input publish-subtitle" contenteditable="true" placeholder="Preview subtitle..."></div>
+            </div>
+
+            <div class="btn solid publish-submit">
+                Publish
+            </div>
         </div>
 
     </div>

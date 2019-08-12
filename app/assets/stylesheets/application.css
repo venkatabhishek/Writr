@@ -67,6 +67,7 @@ html, body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    
 }
 
 .publish{
@@ -87,6 +88,12 @@ html, body {
 .border {
     border: 1px solid #029e74;
     padding: 10px 15px !important;
+}
+
+.solid{
+    background-color: #029e74;
+    color: white;
+    padding: 15px; 
 }
 
 .avatar{
@@ -175,21 +182,32 @@ html, body {
     bottom: 0;
     right: 0;
     background-color: #fff;
-    width: 100%;
+    max-width: 1080px;
     height: 100%;
-    /* display: none; */
-    margin: auto;
+    justify-content: center;
+    margin:  auto;
     z-index: 2;
+    flex-direction: column;
+    display: none;
 }
 
 .publish-content{
     display: flex;
-    width: 80%;
-    margin: auto;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.publish-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .col{
-    width: 50%;
+    width: 40%;
+    padding: 50px 0;
+    margin: auto;
 }
 
 .meta{
@@ -198,10 +216,41 @@ html, body {
 }
 
 .publish-image{
-    width: 400px;
-    height: 200px;
+    height: 300px;
     background-color: lightgrey;
+    background-image: url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"); 
+    background-size: cover;
 }
+
+.input{
+    border-bottom: 3px solid #ccc;
+    outline: none;
+    font-size: 18px;
+    padding:  15px;
+    text-align: start;
+    
+}
+.input-group{
+     margin-bottom: 30px;
+     display: flex;
+     flex-direction: column;
+}
+
+.input-border{
+    border: 3px solid #ccc;
+    text-align: start;
+    outline: none;
+    padding: 10px;
+}
+
+.input, .input-border{
+    margin: 15px 0;
+}
+
+[contenteditable=true]:empty::before {
+    content: attr(placeholder);
+    color: rgba(0, 0, 0, 0.54);
+  }
 
 @media only screen and (max-width: 600px) {
     .logo {
@@ -212,6 +261,17 @@ html, body {
     }
     .new {
         display: none;
+    }
+    .publish-wrapper{
+        padding: 40px;
+        justify-content: unset;
+    }
+    .col{
+        width: 100%;
+        padding: 0;
+    }
+    .meta{
+        margin-bottom: 20px;
     }
 }
 

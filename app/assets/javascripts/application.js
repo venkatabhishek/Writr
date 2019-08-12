@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require tagify
 //= require toastr.min
 //= require rails-ujs
 //= require activestorage
@@ -50,13 +51,46 @@ $(document).ready(function() {
         })
     })
 
-    //publish
+    // publish
     $(".publish").click(function(){
-        $(".publish-wrapper").show();
+        $(".publish-wrapper").css("display", "flex");
     })
 
     $(".publish-close").click(function(){
         $(".publish-wrapper").hide();
     })
 
+    $(".publish-submit").click(function(){
+        var data = {
+            article: {
+                title: $(".publish-title").html(),
+                subtitle: $(".publish-subtitle").html(),
+                tags: $("input[name='tags']").val(),
+                draft: false            
+            }
+        }
+
+        $.ajax({
+            type: 'PATCH',
+            url: '/articles/' + window.location.pathname.split("/")[2],
+            data: data
+
+        }).done(function(data) {
+
+            if (data.status == 1) {
+               window.location = "/me/articles"
+            } else {
+                console.log("error")
+            }
+
+
+        }).fail(function(err) {
+            console.log(err)
+        })
+
+    })
+
+    // tagify
+    var input = document.querySelector('input[name=tags]');
+    var tagify = new Tagify(input) 
 })
