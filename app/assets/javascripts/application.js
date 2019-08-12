@@ -50,4 +50,13 @@ $(document).ready(function() {
         })
     })
 
+    //publish
+    $(".publish").click(function(){
+        $(".publish-wrapper").show();
+    })
+
+    $(".publish-close").click(function(){
+        $(".publish-wrapper").hide();
+    })
+
 })

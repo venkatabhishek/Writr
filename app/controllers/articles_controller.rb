@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
 
   def new
-    @email = current_user.email
+    @publishable = true
   end
 
   def create
@@ -26,6 +26,7 @@ class ArticlesController < ApplicationController
 end
 
   def edit
+    @publishable = true
     @article = Article.find(params[:id])
     if(@article.user_id != current_user.id)
         redirect_to root
@@ -39,6 +40,15 @@ end
     @article = Article.find(params[:id])
 
     render json: { content: @article.content }
+  end
+
+  def publish
+    @article = Article.find(params[:id])
+    if(@article.update(draft: false))
+      render json: { status: 1 }
+    else
+      render json: { status: 0 }
+    end
   end
 
   def destroy

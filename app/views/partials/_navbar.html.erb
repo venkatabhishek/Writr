@@ -4,7 +4,14 @@
             <span class="logo">Writr</span>
             <span class="logo-mobile">W</span>
         </div>
+         
         <div class="link-wrapper">
+            <% if @publishable %>
+                <div class="btn green publish">
+                    Publish
+                </div>
+            <% end %>
+
             <%= image_tag("search.svg", :alt => "search", :class => "link route", :data => { :path => "/search"} ) %>
             <% if user_signed_in? %>
                 <%= image_tag("bell.svg", :alt => "notif", :class => "link route", :data => { :path => "/notifications"} ) %>
@@ -58,5 +65,26 @@
             <% end %>
 
         </div>
+    </div>
+</div>
+
+<div class="publish-wrapper">
+
+    <div class="publish-close">
+        Close
+    </div>
+
+    <div class="publish-content">
+        <div class="col">
+            <div class="publish-image">
+            </div>
+        </div>
+        <div class="col meta">
+            <label>Title</label>
+            <input />
+            <label>Subtitle</label>
+            <input />
+        </div>
+
     </div>
 </div>
