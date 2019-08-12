@@ -1,0 +1,33 @@
+<%= render "partials/navbar" %>
+
+<div class="wrapper read">
+    <div class="title read-item"><%= @article.title %></div>
+    <div class="subtitle read-item"><%= @article.subtitle %></div>
+
+    <div class="author-wrapper read-item">
+        <img src="<%= Identicon.data_url_for @article.user.email %>" alt="" />
+        <div class="author-details">
+            <%= @article.user.email %>
+        </div>
+    </div>
+
+    <div class="main-img read-item">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=80" alt="" />
+    </div>
+
+    <div id="content" class="read-item">
+    </div>
+</div>
+
+
+<script>
+
+    var content = <%= raw @article.content %>
+    
+    var quill = new Quill('#content', { 
+        readOnly: true, 
+    });
+
+    quill.setContents(content);
+
+</script>

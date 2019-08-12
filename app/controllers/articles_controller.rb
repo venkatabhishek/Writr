@@ -49,6 +49,15 @@ end
     render json: { status: 1 }
   end
 
+  def show
+    @article = Article.find(params[:id])
+
+    if(@article.draft)
+      redirect_to root
+    end
+      
+  end
+
   private
 
   def article_params

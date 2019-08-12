@@ -1,0 +1,24 @@
+.small-article{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 20px;
+}
+
+.small-title, .small-subtitle{
+    margin: 10px 0;
+}
+
+.small-title{
+    font-size: 24px;
+}
+
+.small-subtitle{
+    font-size: 20px;
+    color: rgba(0,0,0,0.8);
+}
+
+.view{
+    display: flex;
+    flex-flow: row wrap;
+}

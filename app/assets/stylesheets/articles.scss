@@ -17,7 +17,7 @@
 }
 
 
-h1, h2, h4{
+h1, h2, h3, h4{
     font-weight: normal;
 }
 
@@ -129,4 +129,44 @@ h1, h2, h4{
 
 .ql-active:hover{
     background-color: rgba(0, 0, 0, 0.15);
+}
+
+.read{
+    max-width: 900px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-img{
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.read-item{
+    margin: 15px 0;
+}
+
+.title{
+    font-size: 40px;
+}
+
+
+.subtitle, #content{
+    font-size: 24px;
+}
+
+.subtitle{
+    color: rgba(0, 0, 0, 0.64);
+}
+
+.author-wrapper{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.author-wrapper > img{
+    width: 40px;
+    border-radius: 100%;
+    margin-right: 10px;
 }
