@@ -175,7 +175,6 @@ html, body {
 
 .publish-wrapper{
     position: fixed;
-    overflow: auto;
     text-align: center;
     top: 0;
     left: 0;

@@ -170,3 +170,37 @@ h1, h2, h3, h4{
     border-radius: 100%;
     margin-right: 10px;
 }
+
+.image-wrapper{
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 1080px;
+    height: 100%;
+    margin:  auto;
+    z-index: 2;
+    flex-direction: column;
+    display: none;
+    padding-top: 250px;
+}
+
+.image-close{
+    padding-bottom: 10px;
+}
+
+.image-content{
+    background: #fff;
+}
+
+#unsplash-search > input{
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 14px;
+    outline: none;
+    width: 80%;
+    font-size: 21px;
+}

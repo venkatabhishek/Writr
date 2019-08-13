@@ -78,6 +78,21 @@ $(document).ready(function() {
 
         });
 
+        // add image from unsplash
+
+        $(".unsplash-image").click(function(){
+            $(".image-wrapper").css("display", "flex");
+        })
+
+        $(".image-close").click(function(){
+            $(".image-wrapper").hide();
+        })
+
+        $("form#unsplash-search").submit(function(e){
+            e.preventDefault();
+
+            console.log("submitted")
+        })
 
     }).fail(function(e) {
         console.log(e)

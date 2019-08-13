@@ -1,24 +1,39 @@
 .small-article{
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 330px;
     margin: 20px;
 }
+
 
 .small-title, .small-subtitle{
     margin: 10px 0;
 }
 
 .small-title{
-    font-size: 24px;
+    font-size: 26px;
+    margin-top: 15px;
 }
 
 .small-subtitle{
     font-size: 20px;
-    color: rgba(0,0,0,0.8);
+    margin-top: 5px;
+    color: rgba(0,0,0,.54);
 }
 
 .view{
     display: flex;
     flex-flow: row wrap;
+}
+
+.author-wrapper{
+    margin-top: 10px;
+}
+
+.author-wrapper > img{
+    width: 36px;
+}
+
+.author-details{
+    font-size: 16px;
 }
