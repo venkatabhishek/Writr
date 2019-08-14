@@ -88,11 +88,6 @@ $(document).ready(function () {
             $(".image-wrapper").hide();
         })
 
-        $('.image-results').masonry({
-            itemSelector: '.image-option',
-            columnWidth: 200,
-            horizontalOrder: true
-        });
 
 
         function getImages(query, page) {
@@ -107,22 +102,31 @@ $(document).ready(function () {
                 }
             }).done(function (data) {
                 data.results.forEach(img => {
-                   var item =  $(`
-                        <div class="image-option">
-                            <img src="${img.urls.thumb}" alt="">
-                        </div>
+                    var size = img.urls.thumb ? img.urls.thumb : img.urls.small;
+
+                    var item = $(`
+                            <img class="image-option" src="${size}" alt="">
                     `)
 
-                    $(".image-results").append(item).masonry('appended', item).masonry();;
+                    $(".image-results").append(item);
                 })
-
-                
 
 
             }).fail(function (err) {
                 console.log(err)
             }).always(function () {
-                
+                $('.image-results').masonry({
+                    itemSelector: '.image-option',
+                    columnWidth: 200,
+                    horizontalOrder: true
+                });
+
+                $(".image-option").click(function (e) {
+
+                    quill.insertEmbed(quill.getSelection(2), 'image', e.currentTarget.src);
+                    $(".image-wrapper").hide();
+
+                })
             })
         }
 
@@ -132,7 +136,7 @@ $(document).ready(function () {
             var query = $(".image-search-input").val();
             $(".image-results").empty()
 
-            getImages(query, 1); 
+            getImages(query, 1);
 
         })
 
@@ -141,8 +145,6 @@ $(document).ready(function () {
     }).fail(function (e) {
         console.log(e)
     })
-
-
 
 
 })

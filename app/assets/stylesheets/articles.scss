@@ -32,10 +32,15 @@ h1, h2, h3, h4{
     margin-bottom: 30px;
 }
 
+[contenteditable=true]{
+    outline: none;
+}
+
 #editor{
     font-family: 'Roboto', sans-serif;
     font-size: 21px;
 }
+
 
 .article{
     display: flex;
@@ -190,6 +195,7 @@ h1, h2, h3, h4{
 
 .image-close{
     padding-bottom: 10px;
+    cursor: pointer;
 }
 
 .image-content{
@@ -207,6 +213,6 @@ h1, h2, h3, h4{
 
 .image-results{
     height: 400px !important;
-    padding: 20px 5px;
+    margin-top: 20px;
     overflow-y: auto;
 }
