@@ -1,10 +1,21 @@
-.wrapper{
+body{
+    overflow: hidden;
+}
+
+.scroll-wrapper{
+    overflow-y: auto;
+    height: 100%;
+    min-height: 100%;
+    
+}
+
+.wrapper {
     width: 100%;
     max-width: 1080px;
     margin: auto;
 }
 
-.save{
+.save {
     float: right;
     color: rgba(0, 0, 0, 0.54);
 }
@@ -17,44 +28,47 @@
 }
 
 
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
     font-weight: normal;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-#toolbar{
+#toolbar {
     margin-bottom: 30px;
 }
 
-[contenteditable=true]{
+[contenteditable=true] {
     outline: none;
 }
 
-#editor{
+#editor {
     font-family: 'Roboto', sans-serif;
     font-size: 21px;
 }
 
 
-.article{
+.article {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.btns{
+.btns {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.h{
+.h {
     height: 30px;
     padding: 10px 15px !important;
     margin: 10px;
@@ -65,13 +79,13 @@ h1, h2, h3, h4{
 }
 
 
-.small{
+.small {
     font-size: 12px;
     color: grey;
     margin-left: 10px;
 }
 
-.more{
+.more {
     height: 20px;
     filter: invert(41%) sepia(0%) saturate(0%) hue-rotate(41deg) brightness(98%) contrast(87%);
     padding: 9px 6px;
@@ -81,15 +95,15 @@ h1, h2, h3, h4{
     transition: background-color 100ms linear;
 }
 
-.more:hover{
+.more:hover {
     background-color: rgba(0, 0, 0, 0.12);
 }
 
-.down{
-    background-color: rgba(0,0,0,0.2) !important;
+.down {
+    background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
-.options{
+.options {
     display: none;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 3px;
@@ -99,23 +113,23 @@ h1, h2, h3, h4{
     width: 100px;
 }
 
-.option{
+.option {
     margin: 14px 5px;
     cursor: pointer;
     padding: 8px;
     border-radius: 4px;
 }
 
-.option:hover{
-    background: rgba(0,0,0,0.09);
+.option:hover {
+    background: rgba(0, 0, 0, 0.09);
 }
 
-.red{
+.red {
     color: red;
 }
 
 
-.toolbar-option{
+.toolbar-option {
     outline: none;
     border: 1px solid rgba(0, 0, 0, 0.12);
     height: 48px;
@@ -124,59 +138,60 @@ h1, h2, h3, h4{
     transition: background-color 100ms linear;
 }
 
-.toolbar-option:hover{
+.toolbar-option:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.ql-active{
+.ql-active {
     background-color: rgba(0, 0, 0, 0.12);
 }
 
-.ql-active:hover{
+.ql-active:hover {
     background-color: rgba(0, 0, 0, 0.15);
 }
 
-.read{
+.read {
     max-width: 900px !important;
     display: flex;
     flex-direction: column;
 }
 
-.main-img{
+.main-img {
     margin-left: auto !important;
     margin-right: auto !important;
 }
 
-.read-item{
+.read-item {
     margin: 15px 0;
 }
 
-.title{
+.title {
     font-size: 40px;
 }
 
 
-.subtitle, #content{
+.subtitle,
+#content {
     font-size: 24px;
 }
 
-.subtitle{
+.subtitle {
     color: rgba(0, 0, 0, 0.64);
 }
 
-.author-wrapper{
+.author-wrapper {
     display: flex;
     align-items: center;
     font-size: 20px;
 }
 
-.author-wrapper > img{
+.author-wrapper>img {
     width: 40px;
     border-radius: 100%;
     margin-right: 10px;
 }
 
-.image-wrapper{
+.image-wrapper {
     position: fixed;
     text-align: center;
     top: 0;
@@ -186,23 +201,23 @@ h1, h2, h3, h4{
     background-color: rgba(255, 255, 255, 0.8);
     max-width: 1080px;
     height: 100%;
-    margin:  auto;
+    margin: auto;
     z-index: 2;
     flex-direction: column;
     display: none;
     padding-top: 250px;
 }
 
-.image-close{
+.image-close {
     padding-bottom: 10px;
     cursor: pointer;
 }
 
-.image-content{
+.image-content {
     background: #fff;
 }
 
-#unsplash-search > input{
+#unsplash-search>input {
     border: none;
     border-bottom: 2px solid black;
     padding: 14px;
@@ -211,32 +226,32 @@ h1, h2, h3, h4{
     font-size: 21px;
 }
 
-.image-results{
+.image-results {
     height: 500px !important;
     overflow-y: auto;
     margin-top: 20px;
     padding: 10px;
 }
 
-.image-option-wrapper{
+.image-option-wrapper {
     width: 225px;
     margin-bottom: 10px;
 }
 
-.image-option{
+.image-option {
     width: 225px;
 }
 
-.image-option:hover{
+.image-option:hover {
     box-shadow: 0 0 0 3px #34e79a;
 }
 
-.image-blot{
+.image-blot {
     display: block;
     margin: auto;
     width: 700px;
 }
 
-#editor img:hover{
+.img-blot:hover {
     box-shadow: 0 0 0 3px #34e79a;
 }

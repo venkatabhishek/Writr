@@ -30,8 +30,8 @@ $(document).ready(function () {
                     handlers: ['bold', 'italic', 'underline', 'strike']
                 },
             },
-            scrollingContainer: '#scrolling-container', 
-            placeholder: 'Compose an epic...',
+            scrollingContainer: '.scroll-wrapper',
+            placeholder: 'Compose an epic...'
         });
 
         content = new Delta(JSON.parse(data.content).ops)

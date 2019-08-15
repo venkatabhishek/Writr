@@ -2,25 +2,23 @@ $(document).ready(function () {
 
     // setup
 
-    var Delta = Quill.import('delta');
-
     var save = $(".save");
-
-    var token = $('meta[name="csrf-token"]').attr('content');
-
     var created = false;
     var id = -1;
 
+    // customize Quill
+
+    var Image = Quill.import('formats/image');
+    Image.className = 'image-blot';
+    Quill.register(Image, true);
+
     var quill = new Quill('#editor', {
         modules: {
-            toolbar: {
-                container: "#toolbar",
-                handlers: ['bold', 'italic', 'underline', 'strike']
-            },
+          toolbar: '#toolbar'
         },
-        placeholder: 'Compost an epic...',
-
-    });
+        placeholder: 'Compose an epic...',
+        scrollingContainer: '.scroll-wrapper'
+      });
 
     var content = quill.getContents();
     var timeoutId;
@@ -34,7 +32,6 @@ $(document).ready(function () {
 
             if (diff.ops.length > 0) {
                 content = newContent;
-
 
                 // send save request
                 if (created) {
@@ -53,13 +50,10 @@ $(document).ready(function () {
                     }).done(function (data) {
 
                         if (data.status == 1) {
-                            save.html("four foot neck")
+                            save.html("Saved")
                         } else {
                             save.html("error")
                         }
-
-
-
 
                     }).fail(function (err) {
 
@@ -88,14 +82,12 @@ $(document).ready(function () {
                         id = data.id
                         created = true;
 
-                        window.history.pushState({}, 'Bathroom', `/articles/${id}/edit`);
+                        window.history.pushState({}, '', `/articles/${id}/edit`);
 
                     }).fail(function (err) {
                         console.log(err)
                     })
                 }
-
-
 
             } else {
                 save.html("")
