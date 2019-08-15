@@ -212,7 +212,31 @@ h1, h2, h3, h4{
 }
 
 .image-results{
-    height: 400px !important;
-    margin-top: 20px;
+    height: 500px !important;
     overflow-y: auto;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.image-option-wrapper{
+    width: 225px;
+    margin-bottom: 10px;
+}
+
+.image-option{
+    width: 225px;
+}
+
+.image-option:hover{
+    box-shadow: 0 0 0 3px #34e79a;
+}
+
+.image-blot{
+    display: block;
+    margin: auto;
+    width: 700px;
+}
+
+#editor img:hover{
+    box-shadow: 0 0 0 3px #34e79a;
 }

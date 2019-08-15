@@ -4,6 +4,12 @@ $(document).ready(function () {
 
     var Delta = Quill.import('delta');
 
+    // customize image blot
+
+    var Image = Quill.import('formats/image');
+    Image.className = 'image-blot';
+    Quill.register(Image, true);
+
     var save = $(".save");
 
     // parse url
@@ -24,6 +30,7 @@ $(document).ready(function () {
                     handlers: ['bold', 'italic', 'underline', 'strike']
                 },
             },
+            scrollingContainer: '#scrolling-container', 
             placeholder: 'Compose an epic...',
         });
 
@@ -98,14 +105,17 @@ $(document).ready(function () {
                     client_id: "45fb81ea68f0f569712dfe304925d9e7753afa93f01c4ca90ccf3ffce423652f",
                     query: query,
                     per_page: 20,
-                    page: page
+                    page: page,
+                    w: 225
                 }
             }).done(function (data) {
                 data.results.forEach(img => {
-                    var size = img.urls.thumb ? img.urls.thumb : img.urls.small;
+                    var size = img.urls.full ? img.urls.full : img.urls.regular;
 
                     var item = $(`
+                        <div class="image-option-wrapper">
                             <img class="image-option" src="${size}" alt="">
+                        </div>
                     `)
 
                     $(".image-results").append(item);
@@ -116,8 +126,9 @@ $(document).ready(function () {
                 console.log(err)
             }).always(function () {
                 $('.image-results').masonry({
-                    itemSelector: '.image-option',
-                    columnWidth: 200,
+                    itemSelector: '.image-option-wrapper',
+                    columnWidth: 225,
+                    gutter: 10,
                     horizontalOrder: true
                 });
 

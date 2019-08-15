@@ -26,7 +26,7 @@ $(document).ready(function () {
     var timeoutId;
 
     quill.on('text-change', function () {
-        save.html("take a break...")
+        save.html("saving...")
         clearTimeout(timeoutId);
         timeoutId = setTimeout(function () {
             var newContent = quill.getContents()
