@@ -6,19 +6,42 @@ $(document).ready(function () {
     var created = false;
     var id = -1;
 
-    // customize Quill
+    const Parchment = Quill.import('parchment');
+    const Embed = Quill.import('blots/block/embed');
 
-    var Image = Quill.import('formats/image');
-    Image.className = 'image-blot';
-    Quill.register(Image, true);
+    class Figure extends Embed {
+        static create(value){
+            let node = super.create(value);
+
+            let image = document.createElement('img')
+            image.setAttribute('src', value.src);
+            image.classList.add('image-blot');
+
+            let caption = document.createElement('a')
+            caption.innerText = value.caption;
+            caption.classList.add('caption-blot')
+
+            node.appendChild(image);
+            node.appendChild(caption)
+            node.setAttribute('contenteditable', false);
+
+            return node;
+        }
+    } 
+
+    Figure.blotName = 'figure';
+    Figure.className = 'figure'
+    Figure.tagName = 'div'
+
+    Quill.register(Figure);
 
     var quill = new Quill('#editor', {
         modules: {
-          toolbar: '#toolbar'
+            toolbar: '#toolbar'
         },
         placeholder: 'Compose an epic...',
         scrollingContainer: '.scroll-wrapper'
-      });
+    });
 
     var content = quill.getContents();
     var timeoutId;
@@ -123,10 +146,10 @@ $(document).ready(function () {
         }).done(function (data) {
             data.results.forEach(img => {
                 var size = img.urls.thumb ? img.urls.thumb : img.urls.small;
-
+                var actual = img.urls.full ? img.urls.full : img.url.regular
                 var item = $(`
                     <div class="image-option">
-                        <img src="${size}" alt="">
+                        <img src="${size}" data-url="${actual}" data-author="${img.user.name}" alt="">
                     </div>
                 `)
 
@@ -137,15 +160,22 @@ $(document).ready(function () {
         }).fail(function (err) {
             console.log(err)
         }).always(function () {
-            $('.image-results').masonry({
-                itemSelector: '.image-option',
-                columnWidth: 200,
-                horizontalOrder: true
+            var macy = Macy({
+                container: '.image-results',
+                trueOrder: false,
+                waitForImages: true,
+                margin: 10,
+                columns: 4
             });
 
             $(".image-option").click(function (e) {
 
-                quill.insertEmbed(quill.getSelection(2), 'image', e.currentTarget.children[0].src);
+                var img = $(e.currentTarget.children[0])
+
+                quill.insertEmbed(quill.getSelection(), 'figure', {
+                    caption: `Photo by ${img.data('author')} on Unsplash`,
+                    src: img.data('url')
+                });
                 $(".image-wrapper").hide();
 
             })

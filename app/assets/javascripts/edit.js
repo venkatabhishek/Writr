@@ -3,12 +3,52 @@ $(document).ready(function () {
     // setup
 
     var Delta = Quill.import('delta');
+    const Block = Quill.import('blots/block');
+    const Container = Quill.import('blots/container');
 
-    // customize image blot
+    // image blot
 
     var Image = Quill.import('formats/image');
     Image.className = 'image-blot';
     Quill.register(Image, true);
+
+    // caption blot
+
+    class FigCaption extends Block {
+        static create(value) {
+            const node = super.create();
+            node.dataset.caption = value;
+            node.setAttribute('align', 'center');
+            node.innerText = value;
+            return node;
+        }
+        static value(domNode) {
+            return domNode.dataset.caption;
+        }
+    }
+
+    FigCaption.blotName = 'fig-caption';
+    FigCaption.tagName = 'figcaption';
+    Quill.register(FigCaption, true);
+
+
+    // figure blot (composed)
+
+    class FigureBlot extends Container {
+        static create(value) {
+            const node = super.create();
+            const imageElement = Image.create(value.src);
+            const captionElement = FigCaption.create(value.caption);
+            node.appendChild(imageElement);
+            node.appendChild(captionElement);
+            return node;
+        }
+    }
+
+    FigureBlot.blotName = 'figure';
+    FigureBlot.tagName = 'figure';
+    Quill.register(FigureBlot, true);
+
 
     var save = $(".save");
 
@@ -125,16 +165,16 @@ $(document).ready(function () {
             }).fail(function (err) {
                 console.log(err)
             }).always(function () {
-                $('.image-results').masonry({
-                    itemSelector: '.image-option-wrapper',
-                    columnWidth: 225,
-                    gutter: 10,
-                    horizontalOrder: true
+                var macy = Macy({
+                    container: '.image-results',
+                    trueOrder: false,
+                    margin: 2,
+                    columns: 4
                 });
 
                 $(".image-option").click(function (e) {
 
-                    quill.insertEmbed(quill.getSelection(2), 'image', e.currentTarget.src);
+                    quill.insertEmbed(quill.getSelection(), 'figure', e.currentTarget.src);
                     $(".image-wrapper").hide();
 
                 })

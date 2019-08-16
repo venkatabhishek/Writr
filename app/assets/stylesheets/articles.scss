@@ -240,16 +240,26 @@ h4 {
 
 .image-option {
     width: 225px;
+    margin-top: 5px;
 }
 
-.image-option:hover {
+.image-option > img:hover {
     box-shadow: 0 0 0 3px #34e79a;
+}
+
+.figure{
+    text-align: center;
 }
 
 .image-blot {
     display: block;
     margin: auto;
     width: 700px;
+}
+
+.caption-blot {
+    color:rgba(0,0,0,.68);
+    font-size: 16px;
 }
 
 .img-blot:hover {

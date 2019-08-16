@@ -13,6 +13,7 @@
 //= require jquery
 //= require tagify
 //= require toastr.min
+//= require macy
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
