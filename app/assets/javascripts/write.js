@@ -17,6 +17,7 @@ class Figure extends Embed {
         // image
         const imgElement = document.createElement('img');
         imgElement.src = value.src;
+        imgElement.classList.add("unsplash-img")
 
         // caption
         const captionElement = document.createElement('figcaption');
@@ -28,6 +29,10 @@ class Figure extends Embed {
         node.setAttribute('align', 'center');
 
         return node;
+    }
+
+    static value(){
+
     }
 }
 
@@ -116,20 +121,22 @@ $(".image-close").click(function () {
 function getImages(query, page) {
     $.ajax({
         method: "GET",
-        url: "https://api.unsplash.com/search/photos",
+        url: "/articles/search",
         data: {
-            client_id: "45fb81ea68f0f569712dfe304925d9e7753afa93f01c4ca90ccf3ffce423652f",
-            query: query,
-            per_page: 20,
+            q: query,
             page: page
         }
     }).done(function (data) {
         data.results.forEach(img => {
-            var size = img.urls.thumb ? img.urls.thumb : img.urls.small;
-            var actual = img.urls.full ? img.urls.full : img.url.regular
+            var sizeOrder = ['thumb', 'small']
+            var actualOrder = ['large','regular', 'medium']
+            
+            var size = sizeOrder.filter(item => item in img.urls)[0] || ""
+            var actual = actualOrder.filter(item => item in img.urls)[0] || ""
+
             var item = $(`
                     <div class="image-option">
-                        <img src="${size}" data-url="${actual}" data-author="${img.user.name}" alt="">
+                        <img src="${img.urls[size]}" data-url="${img.urls[actual]}" data-author="${img.user.name}" alt="">
                     </div>
                 `)
 

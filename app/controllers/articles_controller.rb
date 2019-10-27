@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'json'
+require 'unsplash'
 
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
@@ -60,9 +61,13 @@ end
 
   def image
     q = params['q']
-    page = params['page']
+    page = params['page'] || 1
 
-    
+    search_results = Unsplash::Photo.search(q, page, 5)
+
+    search_results.map! { |obj| obj.as_json['attributes']['table']}
+
+    render json: { results: search_results }
 
   end
 
