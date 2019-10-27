@@ -58,6 +58,14 @@ end
       
   end
 
+  def image
+    q = params['q']
+    page = params['page']
+
+    
+
+  end
+
   private
 
   def article_params
