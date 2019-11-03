@@ -11,7 +11,6 @@ $.ajax({
     method: "GET",
     url: `/articles/${id}/content`
 }).done(function (data) {
-
     content = new Delta(JSON.parse(data.content).ops)
     quill.setContents(content)
 

@@ -22,22 +22,26 @@ class Figure extends Embed {
         // caption
         const captionElement = document.createElement('figcaption');
         captionElement.innerText = value.caption;
-
+        
         node.appendChild(imgElement);
         node.appendChild(captionElement);
 
         node.setAttribute('align', 'center');
+        node.dataset.caption = value.caption;
+        node.dataset.src = value.src;
 
         return node;
     }
 
-    static value(){
-
+    static value(node) {
+        return { src: node.dataset.src, caption: node.dataset.caption };
     }
+
 }
 
 Figure.blotName = 'figure';
 Figure.tagName = 'figure';
+Figure.className = 'figure';
 
 Quill.register(Figure);
 
