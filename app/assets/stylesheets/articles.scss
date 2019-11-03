@@ -198,17 +198,18 @@ h4 {
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    max-width: 1080px;
+    background-color: rgba(255, 255, 255, 1);
     height: 100%;
     margin: auto;
     z-index: 2;
     flex-direction: column;
     display: none;
-    padding-top: 250px;
+    padding: 250px 200px;
+    overflow: auto;
 }
 
 .image-close {
+    margin-top: 45px;
     padding-bottom: 10px;
     cursor: pointer;
 }
@@ -226,44 +227,12 @@ h4 {
     font-size: 21px;
 }
 
-.image-results {
-    height: 500px !important;
-    overflow-y: auto;
-    margin-top: 20px;
-    padding: 10px;
+.image-results{
+    margin-bottom: 15px;
 }
 
-.image-option-wrapper {
-    width: 225px;
-    margin-bottom: 10px;
-}
-
-.image-option {
-    width: 225px;
-    margin-top: 5px;
-}
-
-.image-option > img:hover {
-    box-shadow: 0 0 0 3px #34e79a;
-}
-
-.figure{
-    text-align: center;
-}
-
-.image-blot {
-    display: block;
-    margin: auto;
-    width: 700px;
-}
-
-.caption-blot {
-    color:rgba(0,0,0,.68);
-    font-size: 16px;
-}
-
-.img-blot:hover {
-    box-shadow: 0 0 0 3px #34e79a;
+.image-option{
+    margin: 5px;
 }
 
 .unsplash-img{

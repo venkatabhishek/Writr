@@ -63,7 +63,7 @@ end
     q = params['q']
     page = params['page'] || 1
 
-    search_results = Unsplash::Photo.search(q, page, 5)
+    search_results = Unsplash::Photo.search(q, page, 30)
 
     search_results.map! { |obj| obj.as_json['attributes']['table']}
 
