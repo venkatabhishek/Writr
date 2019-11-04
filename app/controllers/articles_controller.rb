@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def new
     @publishable = true
+
   end
 
   def create
@@ -27,6 +28,8 @@ class ArticlesController < ApplicationController
 end
 
   def edit
+
+
     @publishable = true
     @article = Article.find(params[:id])
     if(@article.user_id != current_user.id)
@@ -74,6 +77,6 @@ end
   private
 
   def article_params
-    params.require(:article).permit(:content, :title, :subtitle, :tags, :draft)
+    params.require(:article).permit(:content, :title, :subtitle, :tags, :display_image, :draft)
   end
 end

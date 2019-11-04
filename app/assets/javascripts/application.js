@@ -55,6 +55,30 @@ $(document).ready(function() {
     // publish
     $(".publish").click(function(){
         $(".publish-wrapper").css("display", "flex");
+        
+        // extract content for publishing
+
+        let lines = (quill.editor.delta.ops)
+            .map(l => l.insert)
+            .join("") // new lines singular and contained
+            .split("\n") // remove newlines
+            .filter(s => s != "")
+        
+        let title = lines[0] || "";
+        let subtitle = lines[1] || "";
+
+        // extract image 
+
+        let figureNode = document.querySelector("#editor figure")
+        let figure = figureNode ? figureNode.dataset.src : $(".publish-image").data("default");
+
+        console.log(lines)
+
+        $(".publish-title").html(title);
+        $(".publish-subtitle").html(subtitle);
+        $(".publish-image").empty();
+        $(".publish-image").append(`<img src=${figure} alt="default">`)
+
     })
 
     $(".publish-close").click(function(){
@@ -67,6 +91,7 @@ $(document).ready(function() {
                 title: $(".publish-title").html(),
                 subtitle: $(".publish-subtitle").html(),
                 tags: $("input[name='tags']").val(),
+                "display_image": (".publish-image > img")[0].src,
                 draft: false            
             }
         }

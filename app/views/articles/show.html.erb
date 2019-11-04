@@ -1,9 +1,6 @@
 <%= render "partials/navbar" %>
 
 <div class="wrapper read">
-    <div class="title read-item"><%= @article.title %></div>
-    <div class="subtitle read-item"><%= @article.subtitle %></div>
-
     <div class="author-wrapper read-item">
         <img src="<%= Identicon.data_url_for @article.user.email %>" alt="" />
         <div class="author-details">
@@ -19,6 +16,43 @@
 
 
 <script>
+
+    var Embed = Quill.import('blots/block/embed')
+
+    class Figure extends Embed {
+        static create(value) {
+            const node = super.create();
+
+            // image
+            const imgElement = document.createElement('img');
+            imgElement.src = value.src;
+            imgElement.classList.add("unsplash-img")
+
+            // caption
+            const captionElement = document.createElement('figcaption');
+            captionElement.innerText = value.caption;
+            
+            node.appendChild(imgElement);
+            node.appendChild(captionElement);
+
+            node.setAttribute('align', 'center');
+            node.dataset.caption = value.caption;
+            node.dataset.src = value.src;
+
+            return node;
+        }
+
+        static value(node) {
+            return { src: node.dataset.src, caption: node.dataset.caption };
+        }
+
+    }
+
+    Figure.blotName = 'figure';
+    Figure.tagName = 'figure';
+    Figure.className = 'figure';
+
+    Quill.register(Figure);
 
     var content = <%= raw @article.content %>
     

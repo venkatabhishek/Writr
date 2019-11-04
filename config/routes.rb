@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#profile'
   get '/articles/search', to: "articles#image"
   get '/articles/:id/content', to: 'articles#content'
-
+  
   resources :articles
 
   root to: 'home#index'

@@ -163,12 +163,9 @@ function getImages(query, page) {
             $('.image-results').append(item);
 
             item.onload = function(){
-                console.log("recalc")
                 macy.recalculate();
             }
         })
-
-       
 
 
     }).fail(function (err) {
@@ -189,8 +186,6 @@ function getImages(query, page) {
         macy.runOnImageLoad(function () {
             macy.recalculate(true);
           }, true);
-
-        
         
     })
 }
