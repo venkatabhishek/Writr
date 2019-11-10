@@ -91,7 +91,7 @@ $(document).ready(function() {
                 title: $(".publish-title").html(),
                 subtitle: $(".publish-subtitle").html(),
                 tags: $("input[name='tags']").val(),
-                "display_image": (".publish-image > img")[0].src,
+                "display_image": $(".publish-image > img")[0].src,
                 draft: false            
             }
         }

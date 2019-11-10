@@ -223,7 +223,7 @@ html, body {
 }
 
 .publish-image > img {
-    height: 85%;
+    width: 85%;
     text-align: center;
 
 }
