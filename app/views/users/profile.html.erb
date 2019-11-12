@@ -1,1 +1,38 @@
 <%= render "partials/navbar" %>
+
+<div>
+<% if @user %>
+
+    <div class="wrapper view">
+
+        <div class="banner">
+             <div class="banner-profile">
+                <img class="avatar" src="<%= Identicon.data_url_for @user.email %>" alt="" />
+                <h1><%= @user.username %></h1>
+             </div>
+             <div>
+                <%= @user.articles.length %> Articles
+             </div>
+        </div>
+
+        <div>
+        <% @user.articles.each do |article| %>
+            <div class="small-article route" data-path="/articles/<%= article.id %>">
+                    <img class="small-img" src="<%= article.display_image %>" alt="" />
+                    <div class="small-content">
+                        <h3 class="small-title"><%= article.title %></h1>
+                        <h4 class="small-subtitle"><%= article.subtitle[0..60].gsub(/\s\w+\s*$/, ' ...') %></h4>
+                    </div>
+            </div>
+        <% end %>
+        </div>
+
+    </div>
+
+<% else %>
+
+ NO SUCH USER :)
+ 
+<% end %>
+
+</div>

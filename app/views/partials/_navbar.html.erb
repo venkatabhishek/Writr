@@ -34,7 +34,7 @@
                                     Name
                                 </p>
                                 <p>
-                                    @<%= current_user.email.match(/^[^@]*/i) %>
+                                    @<%= current_user.username %>
                                 </p>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="divide"></div>
                         <p class="hover">Getting Stated</p>
                         <div class="divide"></div>
-                        <p class="route hover" data-path="/profile">Profile</p>
+                        <p class="route hover" data-path="/@<%= current_user.username %>">Profile</p>
                         <p class="hover">Settings</p>
                         <p class="hover">Help</p>
                         </div>

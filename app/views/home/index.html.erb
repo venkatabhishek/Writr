@@ -1,25 +1,26 @@
 <%= render "partials/navbar" %>
 
 <div class="wrapper view">
-
-    <div class="intro-article">
-        <div class="intro-content">
-            <div class="author-wrapper">
-                <img src="<%= Identicon.data_url_for @intro.user.email %>" alt="" />
-                <div class="author-details">
-                    <%= @intro.user.email %>
+    
+    <% if @intro %>
+        <div class="intro-article">
+            <div class="intro-content">
+                <div class="author-wrapper">
+                    <img src="<%= Identicon.data_url_for @intro.user.email %>" alt="" />
+                    <div class="author-details">
+                        <%= @intro.user.email %>
+                    </div>
                 </div>
+                <h2 class="intro-title"><%= @intro.title %></h2>
+                <h3 class="intro-subtitle"><%= @intro.subtitle %></h3>
+                <h4 class="route" style="color: green;" data-path="/articles/<%= @intro.id %>">Read More</h4>
             </div>
-            <h2 class="intro-title"><%= @intro.title %></h2>
-            <h3 class="intro-subtitle"><%= @intro.subtitle %></h3>
-            <h4 class="route" style="color: green;" data-path="/articles/<%= @intro.id %>">Read More</h4>
-        </div>
-        <div class="intro-img">
-            <img src="<%= @intro.display_image %>" alt="" />
-        </div>
+            <div class="intro-img">
+                <img src="<%= @intro.display_image %>" alt="" />
+            </div>
 
-    </div>
-
+        </div>
+    <% end %>
 
     <% @articles.each do |article| %>
         <div class="small-article route" data-path="/articles/<%= article.id %>">
