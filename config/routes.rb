@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   get '/articles/search', to: "articles#image"
   get '/articles/:id/content', to: 'articles#content'
   
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
+  end
 
   root to: 'home#index'
 end

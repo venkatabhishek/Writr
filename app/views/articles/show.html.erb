@@ -12,6 +12,15 @@
 
     <div id="content" class="read-item">
     </div>
+
+    <ul>
+        <%= form_with model: [@article, Comment.new] do |f| %>
+            <%= f.text_area :content, placeholder: "Add a Reply" %><br/>
+            <%= f.submit "Reply"  %>
+        <% end %>
+
+        <%= render partial: '/partials/comment', collection: @article.comments %>
+    </ul>
 </div>
 
 
