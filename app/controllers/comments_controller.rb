@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
           params = params.merge(user_id: current_user.id)
           @commentable.comments.build(params)
           @commentable.save
+          redirect_back(fallback_location: root_path)
         end
     
         private

@@ -14,12 +14,15 @@
     </div>
 
     <ul>
-        <%= form_with model: [@article, Comment.new] do |f| %>
-            <%= f.text_area :content, placeholder: "Add a Reply" %><br/>
-            <%= f.submit "Reply"  %>
+        <% if current_user %>
+            <%= form_with model: [@article, Comment.new] do |f| %>
+                <%= f.text_area :content, placeholder: "Add a Reply", class: "main-comment" %><br/>
+                <%= f.submit "Reply"  %>
+            <% end %>
         <% end %>
 
-        <%= render partial: '/partials/comment', collection: @article.comments %>
+        <%= render partial: "/partials/comment", collection: @article.comments, as: :comment, 
+        locals: {author: @article.user.username } %>
     </ul>
 </div>
 
@@ -70,5 +73,10 @@
     });
 
     quill.setContents(content);
+
+    // comment controls
+
+    // edit
+
 
 </script>

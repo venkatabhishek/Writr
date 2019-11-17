@@ -17,6 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # images
 gem 'unsplash'
+# comment times
+gem 'time_difference'
 # authentication
 gem 'devise'
 # profile avatars

@@ -1,13 +1,37 @@
 <li>
-  <%= comment.user.username %> - <%= comment.content %>
+  <div class="comment-wrapper">
+      <img src="<%= Identicon.data_url_for comment.user.email %>" alt="" />
+      <div class="content">
+        <div class="">
+          <b><%= comment.user.username %></b> 
+          <span style="color: #9F9F9F;"> <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago </span>
+        </div>
+        <%= comment.content %></span>
+        <div class="actions">
+          <div class="action under" data-type="reply">
+            Reply
+          </div>
+          <% if current_user && current_user.username == author %>
+            <div class="action under" data-type="edit">
+              Edit
+            </div>
+            <div class="action under" data-type="delete">
+              Delete
+            </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
 
+  <% if current_user %>
   <%= form_with model: [comment, Comment.new] do |f| %>
-      <%= f.text_area :content, placeholder: "Add a Reply" %><br/>
+      <%= f.text_area :content, placeholder: "Add a Reply", class: "sub-comment" %><br/>
       <%= f.submit "Reply"  %>
+  <% end %>
   <% end %>
 
   <ul>
-      <%= render partial: '/partials/comment', collection: comment.comments %>
+      <%= render partial: "/partials/comment", collection: comment.comments, as: :comment, locals: {author: author} %>
   </ul>
 
 </li>

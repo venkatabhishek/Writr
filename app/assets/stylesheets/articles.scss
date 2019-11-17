@@ -238,3 +238,37 @@ h4 {
 .unsplash-img{
     width: 500px;
 }
+
+ul{
+    list-style-type: none;
+}
+
+.comment-wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 20px 20px 0px;
+}
+
+.comment-wrapper > .content {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-wrapper > img{
+    width: 30px;
+    margin-right: 10px;
+}
+
+.actions {
+    display: flex;
+    color: #9F9F9F;
+}
+
+.action {
+    margin: 5px 5px 5px 0px;
+    border-bottom: 1px solid transparent;
+}
+
+.under:hover{
+    border-bottom: 1px solid #9F9F9F;
+}
