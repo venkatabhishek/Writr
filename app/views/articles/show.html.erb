@@ -15,9 +15,11 @@
 
     <ul>
         <% if current_user %>
-            <%= form_with model: [@article, Comment.new] do |f| %>
-                <%= f.text_area :content, placeholder: "Add a Reply", class: "main-comment" %><br/>
-                <%= f.submit "Reply"  %>
+            <%= form_with model: [@article, Comment.new], class: "top" do |f| %>
+                <%= f.text_area :content, placeholder: "Add a Reply", class: "main-comment" %>
+                <div class="bar">
+                    <%= f.submit "Reply",  class: "submit-btn" %>
+                </div>
             <% end %>
         <% end %>
 
@@ -26,57 +28,8 @@
     </ul>
 </div>
 
-
 <script>
-
-    var Embed = Quill.import('blots/block/embed')
-
-    class Figure extends Embed {
-        static create(value) {
-            const node = super.create();
-
-            // image
-            const imgElement = document.createElement('img');
-            imgElement.src = value.src;
-            imgElement.classList.add("unsplash-img")
-
-            // caption
-            const captionElement = document.createElement('figcaption');
-            captionElement.innerText = value.caption;
-            
-            node.appendChild(imgElement);
-            node.appendChild(captionElement);
-
-            node.setAttribute('align', 'center');
-            node.dataset.caption = value.caption;
-            node.dataset.src = value.src;
-
-            return node;
-        }
-
-        static value(node) {
-            return { src: node.dataset.src, caption: node.dataset.caption };
-        }
-
-    }
-
-    Figure.blotName = 'figure';
-    Figure.tagName = 'figure';
-    Figure.className = 'figure';
-
-    Quill.register(Figure);
-
     var content = <%= raw @article.content %>
-    
-    var quill = new Quill('#content', { 
-        readOnly: true, 
-    });
-
-    quill.setContents(content);
-
-    // comment controls
-
-    // edit
-
-
 </script>
+
+<%= javascript_include_tag 'show' %>

@@ -9,6 +9,13 @@ class CommentsController < ApplicationController
           @commentable.save
           redirect_back(fallback_location: root_path)
         end
+
+        def destroy
+          comment = Comment.find(params[:id])
+          comment.destroy
+
+          render json: { status: 1 }
+        end
     
         private
     

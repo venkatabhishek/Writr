@@ -1,12 +1,12 @@
-body{
+body {
     overflow-x: hidden;
 }
 
-.scroll-wrapper{
+.scroll-wrapper {
     overflow-y: auto;
     height: 100%;
     min-height: 100%;
-    
+
 }
 
 .wrapper {
@@ -227,19 +227,19 @@ h4 {
     font-size: 21px;
 }
 
-.image-results{
+.image-results {
     margin-bottom: 15px;
 }
 
-.image-option{
+.image-option {
     margin: 5px;
 }
 
-.unsplash-img{
+.unsplash-img {
     width: 500px;
 }
 
-ul{
+ul {
     list-style-type: none;
 }
 
@@ -249,12 +249,13 @@ ul{
     padding: 20px 20px 20px 0px;
 }
 
-.comment-wrapper > .content {
+.comment-wrapper>.content {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
-.comment-wrapper > img{
+.comment-wrapper>img {
     width: 30px;
     margin-right: 10px;
 }
@@ -269,6 +270,58 @@ ul{
     border-bottom: 1px solid transparent;
 }
 
-.under:hover{
+.under:hover {
     border-bottom: 1px solid #9F9F9F;
+}
+
+.reply {
+    display: none;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.top{
+    margin-bottom: 40px;
+}
+
+.bar {
+    width: 85%;
+    display: flex;
+    justify-content: flex-end;
+    background: #f6f7f8;
+    padding: 8px 20px;
+    border: 1px solid #EDEFf1;
+}
+
+textarea {
+    width: 85%;
+    padding: 20px;
+    border: 0;
+    outline: 0;
+    border: 1px solid #EDEFf1;
+    
+    resize: vertical;
+}
+
+.main-comment{
+    min-height: 100px;
+}
+
+.submit-btn {
+    border: 0;
+    outline: 0;
+    padding: 10px 15px;
+    background: #0079D3;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #7fbce9
 }
