@@ -10,6 +10,14 @@ class CommentsController < ApplicationController
           redirect_back(fallback_location: root_path)
         end
 
+        def update
+          puts params
+          comment = Comment.find(params[:id])
+          comment.update(content: params[:comment][:content])
+
+          redirect_back(fallback_location: root_path)
+        end
+
         def destroy
           comment = Comment.find(params[:id])
           comment.destroy

@@ -7,7 +7,17 @@
           <span style="color: #9F9F9F;"> <%= distance_of_time_in_words(comment.updated_at, Time.now) %> ago </span>
         </div>
         <div class="comment-body" data-id="<%= comment.id %>">
-          <%= comment.content %>
+          <%= simple_format comment.content %>
+        </div>
+        <div class="comment-edit" data-id="<%= comment.id %>">
+          <%= form_with model: comment, url: comment_path(comment), method: "patch" do |f| %>
+            <%= f.text_area :content, placeholder: "Edit comment...", class: "main-comment", value: comment.content %>
+              <div class="bar">
+                  <button class="cancel form-btn" data-id="<%= comment.id %>">Cancel</button>
+                  <%= f.submit "Reply",  class: "form-btn" %>
+                  
+              </div>
+          <% end %>
         </div>
         <div class="actions">
           <div class="action under" data-type="reply" data-id="<%= comment.id %>">
@@ -27,7 +37,7 @@
           <%= form_with model: [comment, Comment.new] do |f| %>
               <%= f.text_area :content, placeholder: "Add a Reply", class: "main-comment" %>
               <div class="bar">
-                  <%= f.submit "Reply",  class: "submit-btn" %>
+                  <%= f.submit "Reply",  class: "form-btn" %>
               </div>
           <% end %>
         <div>

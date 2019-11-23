@@ -90,11 +90,24 @@ $('.action[data-type="edit"]').click(function (e) {
 
     // replace body with form
 
-    $('.comment-body[data-id="'+id+'"]').attr('contenteditable', true)
-
+    $('.comment-body[data-id="'+id+'"]').hide()
 
     // edit form
-    
+
+    $('.comment-edit[data-id="'+id+'"]').show()
+
+   
     // cancel
+
+    $('.cancel[data-id="'+id+'"]').click(function(e){
+
+        $('.comment-body[data-id="'+id+'"]').show()
+
+        // edit form
+
+        $('.comment-edit[data-id="'+id+'"]').hide()
+
+
+    })
 
 })

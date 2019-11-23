@@ -260,6 +260,10 @@ ul {
     margin-right: 10px;
 }
 
+.comment-edit{
+    display: none;
+}
+
 .actions {
     display: flex;
     color: #9F9F9F;
@@ -311,10 +315,11 @@ textarea {
     min-height: 100px;
 }
 
-.submit-btn {
+.form-btn {
     border: 0;
     outline: 0;
     padding: 10px 15px;
+    margin: 5px;
     background: #0079D3;
     color: white;
     font-weight: 700;
@@ -325,3 +330,4 @@ textarea {
 .submit-btn:hover {
     background: #7fbce9
 }
+

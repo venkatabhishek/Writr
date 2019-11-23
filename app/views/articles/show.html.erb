@@ -18,7 +18,7 @@
             <%= form_with model: [@article, Comment.new], class: "top" do |f| %>
                 <%= f.text_area :content, placeholder: "Add a Reply", class: "main-comment" %>
                 <div class="bar">
-                    <%= f.submit "Reply",  class: "submit-btn" %>
+                    <%= f.submit "Reply",  class: "form-btn" %>
                 </div>
             <% end %>
         <% end %>
