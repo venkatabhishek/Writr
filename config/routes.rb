@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
 
   get '/me/articles', to: 'users#articles'
+  get '/search', to: 'home#search'
+  get '/find', to: 'home#find'
   get '/@:user', to: 'users#profile'
   get '/articles/search', to: "articles#image"
   get '/articles/:id/content', to: 'articles#content'

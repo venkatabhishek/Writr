@@ -1,0 +1,46 @@
+<%= render "partials/navbar" %>
+
+<div class="wrapper view">
+    
+    <div class="search-wrapper">
+        <form id="search">
+            <input id="q" type="text" placeholder="search..." autocomplete="off">
+        </form>
+    </div>
+    
+
+    <div class="results">
+        <% @articles.each do |article| %>
+            <div class="small-article-home route" data-path="/articles/<%= article.id %>">
+                    <img class="small-img" src="<%= article.display_image %>" alt="" />
+                    <div class="small-content">
+                        <h3 class="small-title"><%= article.title %></h1>
+                        <h4 class="small-subtitle"><%= article.subtitle[0..60].gsub(/\s\w+\s*$/, ' ...') %></h4>
+                        <div class="author-wrapper">
+                            <img src="<%= Identicon.data_url_for article.user.email %>" alt="" />
+                            <div class="author-details">
+                                <%= article.user.email %>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        <% end %>
+    </div>
+
+    
+</div>
+
+<script>
+
+    $("form#search").submit(function(e){
+        e.preventDefault();
+
+        $(".results").empty();
+
+        var q = $("input#q").val()
+
+        window.location = '/search?q='+ q
+
+    })
+
+</script>

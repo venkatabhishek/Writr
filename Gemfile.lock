@@ -87,6 +87,7 @@ GEM
     faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
+    fuzzy_match (2.1.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     httparty (0.17.1)
@@ -240,6 +241,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  fuzzy_match
   identicon
   jbuilder (~> 2.5)
   jquery-rails

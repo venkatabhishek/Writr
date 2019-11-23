@@ -17,6 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # images
 gem 'unsplash'
+# article fuzzy search
+gem 'fuzzy_match'
 # comment times
 gem 'time_difference'
 # authentication

@@ -23,7 +23,7 @@
     <% end %>
 
     <% @articles.each do |article| %>
-        <div class="small-article route" data-path="/articles/<%= article.id %>">
+        <div class="small-article-home route" data-path="/articles/<%= article.id %>">
                 <img class="small-img" src="<%= article.display_image %>" alt="" />
                 <div class="small-content">
                     <h3 class="small-title"><%= article.title %></h1>
